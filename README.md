@@ -10,6 +10,15 @@ This plugin uses [jQuery](http://jquery.com).
 
 The [figure](http://www.w3schools.com/tags/tag_figure.asp) and [figcaption](http://www.w3schools.com/tags/tag_figcaption.asp) elements are supported in Internet Explorer 9, Firefox, Opera, Chrome, and Safari.
 
+Usage
+-------
+
+	$('img').caption();
+
+	// or with options
+
+	$('img').caption({'visible':true});
+
 HTML
 -------
 
