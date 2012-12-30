@@ -2,5 +2,6 @@
 $(document).ready(init);
 
 function init(){
-	$('img').caption();
+	$('.first img').caption();
+	$('.second img').caption({'visible':true});
 }
