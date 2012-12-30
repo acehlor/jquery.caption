@@ -52,7 +52,7 @@
 					});
 				}
 				else{
-					$.error("'attr' attribute is not present on element");
+					$.error("'alt' attribute is not present on element");
 				}
 			});
 		},
