@@ -1,17 +1,19 @@
 /*
-* jQuery.caption v0.9
+* jQuery.caption v0.9.1
 *
 */
 
 (function($){
 
+	var settings = {};
+
 	var methods = {
 
 		init : function(options){
 
-			var settings = $.extend({
+			settings = $.extend({
 				'figureClass' : 'figure',
-				'styleClass' : 'figcaption',
+				'figcaptionClass' : 'figcaption',
 				'lineBreak' : ' - ',
 				'visible' : false
 			}, options);
@@ -22,44 +24,32 @@
 
 				if(alt !== undefined){
 
-					var figure = $('<figure />', {'class' : settings.figureClass});
-
-					$(this).wrap(figure);
-
-					var html = "";
-					var lines = alt.split(new RegExp(settings.lineBreak));
-					for(var i = 0;i < lines.length;i++){
-						if(i === 0){
-							html += "<em>"+lines[i]+"</em>";
-						}
-						else{
-							html += "<br/>"+lines[i];
-						}
-					}
-
 					if(!$(this).data('caption')){
-						var caption = $('<figcaption />', {html : html, 'class' : settings.styleClass});
-						$(this).data('caption', {target : $(this), caption : caption});
+						var html = "";
+						var lines = alt.split(new RegExp(settings.lineBreak));
+						for(var i = 0;i < lines.length;i++){
+							if(i === 0){
+								html += "<em>"+lines[i]+"</em>";
+							}
+							else{
+								html += "<br/>"+lines[i];
+							}
+						}
+						var figure = $('<figure />', {'class' : settings.figureClass});
+						var figcaption = $('<figcaption />', {html : html, 'class' : settings.figcaptionClass});
+						$(this).data('caption', {target : $(this), figure : figure, figcaption : figcaption});
 					}
 
-					if(settings.visible === true){
-						$(this).after($(this).data('caption').caption);
+					$(this).wrap($(this).data('caption').figure);
+					$(this).after($(this).data('caption').figcaption);
 
-						$(this).bind('mouseenter.caption', function(){
-							$(this).data('caption').caption.stop().fadeOut();
-						});
-						$(this).bind('mouseleave.caption', function(){
-							$(this).data('caption').caption.fadeIn();
-						});
+					if(settings.visible !== true){
+						$(this).data('caption').figcaption.hide();
 					}
-					else{
-						$(this).bind('mouseenter.caption', function(){
-							$(this).after($(this).data('caption').caption);
-						});
-						$(this).bind('mouseleave.caption', function(){
-							$(this).data('caption').caption.remove();
-						});
-					}
+
+					$(this).bind('mouseenter.caption mouseleave.caption', function(){
+						$(this).data('caption').figcaption.stop().fadeToggle();
+					});
 				}
 				else{
 					$.error("'attr' attribute is not present on element");
@@ -71,9 +61,9 @@
 
 			return this.each(function(){
 
-				var data = $(this).data('caption');
 				$(window).unbind('.caption');
-				data.caption.remove();
+				$(this).data('caption').figure.remove();
+				$(this).data('caption').figcaption.remove();
 				$(this).removeData('caption');
 			});
 		}
