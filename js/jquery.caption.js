@@ -10,7 +10,8 @@
 		init : function(options){
 
 			var settings = $.extend({
-				'styleClass' : 'caption',
+				'figureClass' : 'figure',
+				'styleClass' : 'figcaption',
 				'lineBreak' : ' - ',
 				'visible' : false
 			}, options);
@@ -21,7 +22,9 @@
 
 				if(alt !== undefined){
 
-					$(this).wrap('<figure />');
+					var figure = $('<figure />', {'class' : settings.figureClass});
+
+					$(this).wrap(figure);
 
 					var html = "";
 					var lines = alt.split(new RegExp(settings.lineBreak));
