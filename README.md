@@ -6,7 +6,7 @@ jQuery.caption is a simple plugin which displays an image's 'alt' attribute cont
 Compatibility
 -------------
 
-This plugin works with [jQuery](http://jquery.com).
+This plugin uses [jQuery](http://jquery.com).
 
 The [figure](http://www.w3schools.com/tags/tag_figure.asp) and [figcaption](http://www.w3schools.com/tags/tag_figcaption.asp) elements are supported in Internet Explorer 9, Firefox, Opera, Chrome, and Safari.
 
@@ -34,4 +34,4 @@ Options
 	figureClass		{string}	default:'figure'		The css class of the 'figure' element.
 	figcaptionClass	{string}	default:'figcaption'	The css class of the 'figcaption' element.
 	lineBreak		{string}	default:' - '			A string that is converted to a regular expression and used to delimit a line in the 'alt' attribute.
-	visible			{boolean}	default:'false'			Whether or not the figcaption is initially displayed.
+	visible			{boolean}	default:false			Whether or not the figcaption is initially displayed.
