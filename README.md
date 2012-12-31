@@ -6,7 +6,7 @@ jQuery.caption is a simple plugin which displays an image's 'alt' attribute cont
 Compatibility
 -------------
 
-This plugin uses [jQuery](http://jquery.com).
+This plugin uses the latest [jQuery](http://jquery.com).
 
 The [figure](http://www.w3schools.com/tags/tag_figure.asp) and [figcaption](http://www.w3schools.com/tags/tag_figcaption.asp) elements are supported in Internet Explorer 9, Firefox, Opera, Chrome, and Safari.
 
