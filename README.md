@@ -19,7 +19,7 @@ Usage
 
 	$('img').caption({'visible':true});
 
-HTML
+Resulting HTML
 -------
 
 *Before*
